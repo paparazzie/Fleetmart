@@ -14,6 +14,13 @@ services:
     image: mongo
     ports:
       - '27017:27017'
+  admin-service:
+    container_name: admin
+    image: fleetmart_user-service
+    volumes:
+      - ./Admin:/usr/src/app
+    ports:
+      - 5000:3000
 
 
  
