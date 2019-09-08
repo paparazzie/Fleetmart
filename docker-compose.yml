@@ -21,6 +21,21 @@ services:
       - ./Admin:/usr/src/app
     ports:
       - 5000:3000
+  department-service:
+    container_name: department
+    image: fleetmart_user-service
+    volumes:
+      - ./Department:/usr/src/app
+    ports:
+      - 4000:3000
+  product-service:
+    container_name: product
+    image: fleetmart_user-service
+    volumes:
+      - ./Product:/usr/src/app
+    ports:
+      - 2000:3000
+
 
 
  

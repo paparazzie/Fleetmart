@@ -8,7 +8,7 @@ exports.addUsers =  (req,res,next) => {
 
    users.save((err,data)=>{
         if(err){
-            return next (new Error("failed to add new students"));
+            return next (new Error("failed to add new user"));
             console.log(err)
         }
         res.status(200).json(data);
