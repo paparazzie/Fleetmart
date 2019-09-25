@@ -8,34 +8,39 @@ exports.interceptIDs = (req,res,next, id)=>{
         next();
     },(err)=>{
         return next(err); 
-    })
+    }) 
 };
 
 exports.addProduct = (res,req,next) => {
     let product = req.body;
     let products = new productModel(product);
 
-    products.save((err,data)=>{
-        if(err){
-            return next(new Error("failed to add products"))
+    products.save().then((data)=>{
+        if(!data){
+            res.status(404).send()
         }
-        res.status(200).json(data);
+       res.send(data)
+    }).catch((error)=>{
+        res.status(500).send()
     })
+
 }
 
 exports.fetchAllProducts  = (res,req,next) => {
-    productModel.find((err,data,next)=>{
-        if(err){
-            return next(new Error("couldn't fetch products"))
+    productModel.find({}).then((data)=>{
+        if(!data){
+            res.ststus(400).send()
         }
-        res.status(200).json(data)
+        res.send()
+    }).catch((error)=>{
+        res.status(500).send()
     })
 }
 
 exports.fetchOneProduct = (res,req,next) => {
-    if(!req.product) return next(new Error("couldn't fetch one product"))
+    if(!req.product) return res.status(404).send()
 
-    res.status(200).json(req.product)
+    res.send()
 }
 
 exports.removeProduct = (res,req,next) => {

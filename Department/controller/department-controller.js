@@ -5,14 +5,17 @@ exports.addDepartments = (req,res,next) =>{
   console.log(department)
   var departments = new departmentModel(department)
 
-  departments.save((err,data)=>{
-      if(err){
-        console.log(err)
-          return next (new Error("couldn't add department"))
-      }
-      res.status(200).json(data)
+  departments.save().then((data)=>{
+    res.send(data)
+  }).catch((error)=>{
+    res.status(500).send()
   })
+};
 
-  
-
+exports.viewDepartments = (req,res) =>{
+   departmentModel.find({}).then((data)=>{
+    res.send(data)
+   }).catch(error=>{
+    res.status(500).send()
+   })
 };

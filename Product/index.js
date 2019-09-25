@@ -22,5 +22,5 @@ mongoose.connect(
     }
 )
 app.listen(4000, ()=>{
-    console.log(' My rest API rtunning on port 3000');
+    console.log(' My rest API rtunning on port 4000');
 })

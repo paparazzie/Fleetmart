@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HomeNav from './HomeNav'
+import axios from 'axios';
 class AddDepartment extends Component {
     constructor(props) {
         super(props);
@@ -10,23 +11,35 @@ class AddDepartment extends Component {
         this.setState({[e.target.name]: e.target.value })
     }
     
-   
-    handleSubmit = (e) =>{
+        handleSubmit = (e) => {
         e.persist();
         e.preventDefault();
-      
-        console.log(this.state.department_name)
-        fetch('http://localhost:4000/api/department',{
-            body:{'department_name':this.state.department_name},
-            method:'POST',
-            header:{'Content-Type' : 'application/json'}
-        }).then(res=>res.text())
-        .then(response=>console.log('success',console.log(response)))
-        .catch(error=>console.log('Error',error))
+         
+        
+        
+        axios.post('http://localhost:4000/api/department ',{
+            "department_name":this.state.department_name
+            },{headers: {
+                        "Content-Type": "application/json",  
+                    }})
+          .then(res=>{
+          if(res.status === 200){
+            }else{
+              if(res.status === 403 || res.status === 401){  
+                console.log(res)
+              }
+          }      
+          },err=>{
+          console.log(err)
+          })
 
-
+        this.setState({
+            department_name : ''
+        })
        
-    }
+      }
+
+
     render() {
         console.log(this.state)
         return (

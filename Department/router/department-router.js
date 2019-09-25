@@ -5,5 +5,6 @@ let express = require('express'),
 
     router.route('/')
     .post(controller.addDepartments)
+    .get(controller.viewDepartments)
 
     module.exports = router;

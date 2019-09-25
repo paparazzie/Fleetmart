@@ -35,6 +35,13 @@ services:
       - ./Product:/usr/src/app
     ports:
       - 2000:4000
+  website:
+    container_name: website
+    image: fleetmart_user-service
+    volumes:
+      - ./reactfleet:/usr/src/app
+    ports:
+      - 3000:3000
 
 
 
