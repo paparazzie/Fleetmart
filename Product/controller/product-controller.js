@@ -1,24 +1,12 @@
 let productModel = require('../model/product-model.js');
 
-exports.interceptIDs = (req,res,next, id)=>{
-
-    productModel.findById(id).then((data)=> {
-        if(!data){return next(new Error("..."));}
-        req.product =data;
-        next();
-    },(err)=>{
-        return next(err); 
-    }) 
-};
-
-exports.addProduct = (res,req,next) => {
-    let product = req.body;
-    let products = new productModel(product);
+exports.addProduct =  (req,res,next) => {
+    var product = req.body;
+    console.log(product)
+    product.avatar = req.file.path
+    var products = new productModel(product);
 
     products.save().then((data)=>{
-        if(!data){
-            res.status(404).send()
-        }
        res.send(data)
     }).catch((error)=>{
         res.status(500).send()
@@ -26,12 +14,12 @@ exports.addProduct = (res,req,next) => {
 
 }
 
-exports.fetchAllProducts  = (res,req,next) => {
+exports.fetchAllProducts  = (req,res,next) => {
     productModel.find({}).then((data)=>{
         if(!data){
-            res.ststus(400).send()
+            res.status(400).send()
         }
-        res.send()
+        res.send(data)
     }).catch((error)=>{
         res.status(500).send()
     })
@@ -43,11 +31,3 @@ exports.fetchOneProduct = (res,req,next) => {
     res.send()
 }
 
-exports.removeProduct = (res,req,next) => {
-    productModel.remove({_id: req.product._id},(req,res)=>{
-        if(err){
-            return next(new Error("couldn't delete product"))
-        }
-        res.json(200).json(req.student)
-    })
-}

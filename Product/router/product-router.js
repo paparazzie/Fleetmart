@@ -1,17 +1,13 @@
 let express = require('express'),
     router = express.Router();
-    controller = require('../controller/product-controller.js') 
+    controller = require('../controller/product-controller.js');
+   upload = require("../middleware/upload.js")
     
-    router.param("id",controller.interceptIDs);
-
     router.route('/')
-    .post(controller.addProduct)
+    .post(upload.single('avatar'),controller.addProduct)
     .get(controller.fetchAllProducts);
 
-    router.route("/:id")
-    .get(controller.fetchOneProduct)
-    .delete(controller.removeProduct);
+
     
-
-
+  
     module.exports = router;

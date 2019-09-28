@@ -4,6 +4,7 @@ import { Route} from 'react-router';
 import AdminHome from './AdminComponent/Home';
 import AddDepartment from './AdminComponent/AddDepartment';
 import ViewDepartment from './AdminComponent/ViewDepartment';
+import AddProduct from './AdminComponent/AddProduct'
 function App() {
   return (
     <BrowserRouter>
@@ -12,6 +13,7 @@ function App() {
        <Route exact path ="/" component = {AdminHome}/>
        <Route  path = "/add_department" component = {AddDepartment}/>
        <Route  path = "/view_department" component = {ViewDepartment}/>
+       <Route path = "/add_product" component = {AddProduct}/>
      </Switch>
     </div>
     </BrowserRouter>

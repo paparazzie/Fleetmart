@@ -48,8 +48,7 @@ class AddDepartment extends Component {
                 <HomeNav/>
                 <form class = "m-5" onSubmit={this.handleSubmit}>
                     <div class="form-group">
-                        <input type="text" class="form-control" value={this.state.department_name} name="department_name" onChange = {this.onChange} placeholder="Department Name"/>
-                        
+                        <input type="text" class="form-control" value={this.state.department_name} name="department_name" onChange = {this.onChange} placeholder="Department Name"/>                     
                     </div>
                     <button type="submit" name = "submit" class="btn btn-primary">Submit</button>
                 </form>
