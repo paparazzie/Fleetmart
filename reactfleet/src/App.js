@@ -5,6 +5,7 @@ import AdminHome from './AdminComponent/Home';
 import AddDepartment from './AdminComponent/AddDepartment';
 import ViewDepartment from './AdminComponent/ViewDepartment';
 import AddProduct from './AdminComponent/AddProduct'
+import ViewProduct from './AdminComponent/ViewProduct'
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ function App() {
        <Route  path = "/add_department" component = {AddDepartment}/>
        <Route  path = "/view_department" component = {ViewDepartment}/>
        <Route path = "/add_product" component = {AddProduct}/>
+       <Route path = "/view_product" component = {ViewProduct}/>
      </Switch>
     </div>
     </BrowserRouter>

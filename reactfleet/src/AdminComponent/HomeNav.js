@@ -21,6 +21,9 @@ class HomeNav extends Component {
                     <a class="nav-link" href="add_product">Add Product</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="view_product">View Product</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Logout</a>
                 </li>
             </ul>

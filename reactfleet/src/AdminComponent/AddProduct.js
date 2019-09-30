@@ -51,6 +51,13 @@ class AddProduct extends Component {
         }).catch(error=>{
             console.log(error)
         })
+
+        this.setState({
+            product_name: '',
+            product_price:'',
+            product_department:'',
+            selectedFile:''
+        })
     }
 
     render() {
@@ -63,7 +70,7 @@ class AddProduct extends Component {
         }) ): ( <div className="center">No departments yet</div>)
         return (
             
-           <div>
+           <div class = "container">
                <HomeNav/>
                 <form class = "m-5" enctype = "multipart/form-data"  onSubmit={this.handleSubmit}>
                     <div class="form-group">
